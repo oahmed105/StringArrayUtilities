@@ -53,7 +53,8 @@ public class StringArrayUtils {
             if (array[i].equals(value)) {
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
 
     /**
@@ -65,7 +66,8 @@ public class StringArrayUtils {
         String[] rev = new String[array.length];
         for (int i = array.length - 1, j = 0; i >= 0; i--, j++) {
             rev[j] = array[i].toString();
-        } return rev;
+        }
+        return rev;
         //        List<String> list = Arrays.asList(array);
         //        Collections.reverse(list);
         //        String[] rev = list.toArray(array);
@@ -121,7 +123,14 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int count = 0;
+
+        for (String used : array) {
+            if (used.equals(value)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -136,7 +145,8 @@ public class StringArrayUtils {
                 newArr.add(array[i]);
             }
 
-        } return newArr.toArray(new String[0]);
+        }
+        return newArr.toArray(new String[0]);
     }
 
     /**
@@ -150,7 +160,8 @@ public class StringArrayUtils {
                 continue;
             }
             newArr.add(array[i]);
-        } return newArr.toArray(new String[0]);
+        }
+        return newArr.toArray(new String[0]);
     }
 
     /**
@@ -158,8 +169,23 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        if (array == null || array.length == 0) {
+            return new String[0];
+        }
+        ArrayList<String> result = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
+        sb.append(array[0]);
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].equals(array[i - 1])) {
+                sb.append(array[i]);
+            } else {
+                result.add(sb.toString());
+                sb = new StringBuilder();
+                sb.append(array[i]);
+            }
+        }
+        result.add(sb.toString());
+        return result.toArray(new String[result.size()]);
     }
-
-
 }
+
