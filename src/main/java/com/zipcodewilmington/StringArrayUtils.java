@@ -1,5 +1,6 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -95,13 +96,7 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-        //for (int i = 0; i <= alphabet.length; i++) {
-
-        //}
-        if (array.toString().contains(alphabet.toString())) {
-            return true;
-        } return false;
+            return false;
     }
 
     /**
@@ -119,7 +114,13 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        ArrayList<String> newArr = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != valueToRemove) {
+                newArr.add(array[i]);
+            }
+
+        } return newArr.toArray(new String[0]);
     }
 
     /**
