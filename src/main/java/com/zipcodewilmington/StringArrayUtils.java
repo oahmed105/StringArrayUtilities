@@ -96,7 +96,23 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-            return false;
+        boolean[] alphabet = new boolean[26];
+
+        for (int i = 0; i < array.length; i++) {
+            String str = array[i];
+            for (int j = 0; j < str.length(); j++) {
+                char letter = Character.toLowerCase(str.charAt(j));
+                if (Character.isLetter(letter)) {
+                    alphabet[letter - 'a'] = true;
+                }
+            }
+        }
+        for (int i = 0; i < alphabet.length; i++) {
+            if (!alphabet[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
