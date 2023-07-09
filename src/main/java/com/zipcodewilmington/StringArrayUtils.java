@@ -76,15 +76,32 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        int start = 0;
+        int end = array.length - 1;
+
+        while (start < end) {
+            if (!array[start].equals(array[end])) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
+
 
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        //for (int i = 0; i <= alphabet.length; i++) {
+
+        //}
+        if (array.toString().contains(alphabet.toString())) {
+            return true;
+        } return false;
     }
 
     /**
